@@ -1,0 +1,36 @@
+/** {
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #777;
+
+    
+}
+
+label {
+    color: white;
+}
+
+#side {
+    clear: both;
+    position: relative;
+    background-color: #ebebeb;
+    color: #777;
+    float: left;
+    width: 495px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+#main {
+    position: relative;
+    background-color: #ebebeb;
+    color: #777;
+    float: left;
+    width: 455px;
+    padding-top:20px;
+    padding-bottom: 242px;
+    margin-left: 10px;
+
+}*/

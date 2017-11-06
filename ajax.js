@@ -1,6 +1,6 @@
 $("#addAnimal").on("click", function(event) {
 	event.preventDefault();
-	// console.log(this)
+	console.log(this)
 	var newAnimal = $("#animal-input").val();
 	console.log(newAnimal,"textbox")
 	var queryURL ="https://api.giphy.com/v1/gifs/search?q=" +
@@ -14,10 +14,15 @@ $("#addAnimal").on("click", function(event) {
 	})
 
 	.done(function (response) {
-		// console.log(response)
-	    var results = response.data;
+		
+		// Clear form text area for each successul search
+		$("#animal-form")[0].reset();
+
+		var results = response.data;
+
 		var newButton = $("<button>").attr("class", "added").text(newAnimal);
-		$("body").prepend(newButton);
+		
+		$("#animal-buttons").prepend(newButton);
 
 		$(".added").on("click", function(event){
 			event.preventDefault();
@@ -37,32 +42,31 @@ $("#addAnimal").on("click", function(event) {
 					.attr("class","gif");
 
 
-				gifDiv.append(animalGif);
+				gifDiv.prepend(animalGif);
 				$("#animals").prepend(gifDiv);
 				$("#animals").prepend(p);
+			}
+
+			// Resets value of newAnimal to be used for next search
+			newAnimal.reset();
+
+			$(".gif").click(function(){
+				// console.log(this);
+				// console.log($(this).attr("data-state"))
+
+				if ($(this).attr("data-state") === "still"){
+					$(this).attr("src", $(this).attr("data-animate"))
+					$(this).attr("data-state", "animate")
+				} else {
+					$(this).attr("src", $(this).attr("data-still"))
+					$(this).attr("data-state", "still")
 				}
-
-				$(".gif").click(function(){
-					// console.log(this);
-					// console.log($(this).attr("data-state"))
-
-					if ($(this).attr("data-state") === "still"){
-						$(this).attr("src", $(this).attr("data-animate"))
-						$(this).attr("data-state", "animate")
-					} else {
-						$(this).attr("src", $(this).attr("data-still"))
-						$(this).attr("data-state", "still")
-					}
-				})
+			})
 
 
-		     });
 		});
+				 
+			
+
 	});
-
-
-
-
-
-
-
+});
