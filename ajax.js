@@ -38,8 +38,8 @@ $("#addAnimal").on("click", function(event) {
 
 
 				gifDiv.append(animalGif);
-				$("#animals").append(gifDiv);
-				$("#animals").append(p);
+				$("#animals").prepend(gifDiv);
+				$("#animals").prepend(p);
 				}
 
 				$(".gif").click(function(){
